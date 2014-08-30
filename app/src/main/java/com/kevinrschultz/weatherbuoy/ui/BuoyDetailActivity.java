@@ -1,12 +1,14 @@
-package com.kevinrschultz.weatherbuoy;
+package com.kevinrschultz.weatherbuoy.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kevinrschultz.weatherbuoy.R;
 
-public class BuoyDetail extends Activity {
+
+public class BuoyDetailActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
