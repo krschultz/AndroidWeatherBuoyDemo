@@ -10,6 +10,8 @@ env:
 android:
   components:
     - build-tools-20.0.0
+    - android-20
+    - sys-image-armeabi-v7a-android-20
 
 before_script:
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
