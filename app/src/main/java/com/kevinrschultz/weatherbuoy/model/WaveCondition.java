@@ -17,6 +17,20 @@ public class WaveCondition {
 
     private final int direction;
 
+    /**
+     * GSON Constructor
+     */
+    public WaveCondition() {
+        this.height = 0.0;
+        this.period = 0.0;
+        this.direction = 0;
+    }
+
+    /**
+     * @param height
+     * @param period
+     * @param direction
+     */
     public WaveCondition(double height, double period, int direction) {
         this.height = height;
         this.period = period;

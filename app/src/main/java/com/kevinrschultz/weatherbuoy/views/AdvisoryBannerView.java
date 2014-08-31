@@ -39,6 +39,9 @@ public class AdvisoryBannerView extends FrameLayout implements OptionalTextView 
         label = TextView.class.cast(v.findViewById(R.id.view_advisory_banner_label));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setOptionalText(Optional<String> optionalText) {
         if(optionalText.isPresent() && !TextUtils.isEmpty(optionalText.get())) {

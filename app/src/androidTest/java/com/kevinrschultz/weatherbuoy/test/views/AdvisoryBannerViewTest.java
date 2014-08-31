@@ -8,7 +8,7 @@ import com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView;
 import static org.assertj.android.api.Assertions.assertThat;
 
 /**
- * @author Kevin Schultz
+ * @see com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView
  */
 public class AdvisoryBannerViewTest extends AndroidTestCase {
 

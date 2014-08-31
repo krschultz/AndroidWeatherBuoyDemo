@@ -13,6 +13,18 @@ public class WindCondition {
 
     private final int direction;
 
+    /**
+     * GSON Constructor
+     */
+    public WindCondition() {
+        this.speed = 0.0;
+        this.direction = 0;
+    }
+
+    /**
+     * @param speed
+     * @param direction
+     */
     public WindCondition(double speed, int direction) {
         this.speed = speed;
         this.direction = direction;

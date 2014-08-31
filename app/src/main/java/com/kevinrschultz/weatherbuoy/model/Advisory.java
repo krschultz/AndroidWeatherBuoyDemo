@@ -12,6 +12,9 @@ public class Advisory {
 
     private String advisory;
 
+    /**
+     * @param advisory
+     */
     public Advisory(String advisory) {
         this.advisory = advisory;
     }

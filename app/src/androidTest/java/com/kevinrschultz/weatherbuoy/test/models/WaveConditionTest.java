@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 import java.io.IOException;
 
 /**
- * @author Kevin Schultz
+ * @see com.kevinrschultz.weatherbuoy.model.WaveCondition
  */
 public class WaveConditionTest extends TestCase {
 
