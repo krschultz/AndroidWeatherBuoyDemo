@@ -1,6 +1,8 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,9 +15,9 @@ public class BuoyDetailActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buoy_detail);
+        setContentView(R.layout.activity_fragment_container);
+        attachBuoyDetailFragment();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,5 +36,12 @@ public class BuoyDetailActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void attachBuoyDetailFragment() {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.activity_fragment_container, BuoyDetailFragment.newInstance());
+        ft.commit();
     }
 }
