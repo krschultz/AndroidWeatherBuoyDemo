@@ -25,6 +25,8 @@ android {
 
 dependencies {
     compile 'com.google.guava:guava:17.0'
+    compile 'com.google.code.gson:gson:2.3'
+
 
     androidTestCompile 'com.squareup.assertj:assertj-android-support-v4:1.0.0'
 }
