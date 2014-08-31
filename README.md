@@ -1,5 +1,8 @@
 # Android Weather Buoy Demo
 
+[![Build
+Status](https://travis-ci.org/krschultz/AndroidWeatherBuoyDemo.svg?branch=master)](https://travis-ci.org/krschultz/AndroidWeatherBuoyDemo)
+
 An application that shows some of the principles mentioned in the DroidCon NYC
 2014 talk on writing maintainable Android applications.
 
