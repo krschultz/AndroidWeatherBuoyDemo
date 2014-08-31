@@ -1,6 +1,7 @@
 package com.kevinrschultz.weatherbuoy.model;
 
 import com.google.common.base.Objects;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * @author Kevin Schultz
@@ -9,28 +10,29 @@ public class WaveCondition {
 
     private static final String TAG = WaveCondition.class.getSimpleName();
 
-    private final double waveHeight;
+    private final double height;
 
-    private final double averageWavePeriod;
+    @SerializedName("avg_period")
+    private final double period;
 
-    private final int meanWaveDirection;
+    private final int direction;
 
-    public WaveCondition(double waveHeight, int dominantWavePeriod, int meanWaveDirection) {
-        this.waveHeight = waveHeight;
-        this.averageWavePeriod = dominantWavePeriod;
-        this.meanWaveDirection = meanWaveDirection;
+    public WaveCondition(double height, double period, int direction) {
+        this.height = height;
+        this.period = period;
+        this.direction = direction;
     }
 
-    public double getWaveHeight() {
-        return waveHeight;
+    public double getHeight() {
+        return height;
     }
 
-    public double getAverageWavePeriod() {
-        return averageWavePeriod;
+    public double getPeriod() {
+        return period;
     }
 
-    public int getMeanWaveDirection() {
-        return meanWaveDirection;
+    public int getDirection() {
+        return direction;
     }
 
     /**
@@ -44,9 +46,9 @@ public class WaveCondition {
         boolean equal = false;
         if (o instanceof WaveCondition) {
             WaveCondition other = (WaveCondition) o;
-            equal = Objects.equal(this.waveHeight, other.waveHeight) &&
-                    Objects.equal(this.averageWavePeriod, other.averageWavePeriod) &&
-                    Objects.equal(this.meanWaveDirection, other.meanWaveDirection);
+            equal = Objects.equal(this.height, other.height) &&
+                    Objects.equal(this.period, other.period) &&
+                    Objects.equal(this.direction, other.direction);
         }
 
         return equal;
@@ -55,9 +57,9 @@ public class WaveCondition {
     @Override
     public String toString() {
         return Objects.toStringHelper(TAG)
-                .add("wave height", waveHeight)
-                .add("wave period", averageWavePeriod)
-                .add("wave direction", meanWaveDirection)
+                .add("wave height", height)
+                .add("wave period", period)
+                .add("wave direction", direction)
                 .toString();
     }
 

@@ -1,4 +1,4 @@
-package com.kevinrschultz.weatherbuoy;
+package com.kevinrschultz.weatherbuoy.test;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
