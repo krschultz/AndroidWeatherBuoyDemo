@@ -2,15 +2,18 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/dividers"
+    android:padding="@dimen/standard_padding">
 
     <TextView
         android:id="@+id/view_instrument_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        tools:text="Speed"/>
+        android:layout_margin="@dimen/half_padding"
+        tools:text="Speed" />
 
     <TextView
         android:id="@+id/view_instrument_measurement"
@@ -18,14 +21,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/view_instrument_label"
-        tools:text="10.6"/>
+        android:layout_marginBottom="@dimen/half_padding"
+        android:layout_marginLeft="@dimen/half_padding"
+        android:layout_marginTop="@dimen/half_padding"
+        tools:text="10.6" />
 
     <TextView
         android:id="@+id/view_instrument_units"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/view_instrument_measurement"
+        android:layout_marginBottom="@dimen/half_padding"
+        android:layout_marginRight="@dimen/half_padding"
+        android:layout_marginTop="@dimen/half_padding"
         android:layout_toRightOf="@id/view_instrument_measurement"
-        tools:text="knts"/>
+        tools:text="knts" />
 
 </RelativeLayout>

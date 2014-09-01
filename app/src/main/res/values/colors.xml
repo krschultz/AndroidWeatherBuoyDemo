@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_blue">#4fc3f7</color>
+    <color name="dark_blue">#01579b</color>
+    <color name="light_red">#f36c60</color>
+    <color name="yellow">#fff176</color>
+
+    <color name="dividers">#1E000000</color>
+    <color name="hint_text">#40000000</color>
+    <color name="secondary_text">#8C000000</color>
+    <color name="text">#DD000000</color>
+    <color name="black">#FF000000</color>
+
+</resources>

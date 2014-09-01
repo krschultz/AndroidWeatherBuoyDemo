@@ -5,6 +5,7 @@ import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.ui.BuoyDetailViewModel;
+import com.kevinrschultz.weatherbuoy.views.Instrument;
 
 import junit.framework.TestCase;
 
@@ -22,7 +23,7 @@ public class BuoyDetailViewModelTest extends TestCase {
     private static final Offset<Double> PRECISION = Offset.offset(0.01);
 
     private static final double SPEED = 10.0;
-    private static final int WIND_DIRECTION = 125;
+    private static final int WIND_DIRECTION = 90;
     private static final WindCondition WIND_CONDTIONS = new WindCondition(SPEED, WIND_DIRECTION);
 
     private static final double HEIGHT = 5.0;
@@ -30,24 +31,42 @@ public class BuoyDetailViewModelTest extends TestCase {
     private static final int WAVE_DIRECTION = 225;
     private static final WaveCondition WAVE_CONDITION = new WaveCondition(HEIGHT, PERIOD, WAVE_DIRECTION);
 
+    private MockInstrument mockInstrument;
+
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        mockInstrument = new MockInstrument();
+    }
+
     public void testGetWindDirection() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
-        assertThat(viewModel.getWindDirection()).isEqualTo(WIND_CONDTIONS.getDirection());
+        viewModel.updateWindDirection(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("90");
+        assertThat(mockInstrument.units).isEqualTo("");
     }
 
     public void testGetWindSpeed_Imperial() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeImperialPreferences());
-        assertThat(viewModel.getWindSpeed()).isCloseTo(11.51, PRECISION);
+        viewModel.updateWindSpeed(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("11.5");
+        assertThat(mockInstrument.units).isEqualTo("mph");
     }
 
     public void testGetWindSpeed_Metric() {
+        MockInstrument mockInstrument = new MockInstrument();
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeMetricPreferences());
-        assertThat(viewModel.getWindSpeed()).isCloseTo(18.52, PRECISION);
+        viewModel.updateWindSpeed(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("18.5");
+        assertThat(mockInstrument.units).isEqualTo("kph");
     }
 
     public void testGetWindSpeed_Nautical() {
+        MockInstrument mockInstrument = new MockInstrument();
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
-        assertThat(viewModel.getWindSpeed()).isCloseTo(SPEED, PRECISION);
+        viewModel.updateWindSpeed(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("10.0");
+        assertThat(mockInstrument.units).isEqualTo("kts");
     }
 
     public void testGetWaveDirection() {
@@ -91,6 +110,23 @@ public class BuoyDetailViewModelTest extends TestCase {
         WeatherBuoyPreferences mockPreferences = mock(WeatherBuoyPreferences.class);
         when(mockPreferences.getUserUnitSystem()).thenReturn(UnitSystem.NAUTICAL);
         return mockPreferences;
+    }
+
+    private class MockInstrument implements Instrument {
+        public String label;
+        public String value;
+        public String units;
+
+        @Override
+        public void setLabel(String label) {
+            this.label = label;
+        }
+
+        @Override
+        public void updateReading(String value, String units) {
+            this.value = value;
+            this.units = units;
+        }
     }
 
 }

@@ -5,6 +5,7 @@ import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.util.UnitConverter;
+import com.kevinrschultz.weatherbuoy.views.Instrument;
 
 /**
  * @author Kevin Schultz
@@ -23,21 +24,32 @@ public class BuoyDetailViewModel {
         this.preferences = preferences;
     }
 
-    public int getWindDirection() {
-        return wind.getDirection();
+    public void updateWindDirection(Instrument windDirectionView) {
+        windDirectionView.updateReading(Integer.toString(wind.getDirection()), "");
     }
 
-    public double getWindSpeed() {
-        UnitSystem units = preferences.getUserUnitSystem();
-        switch(units) {
+    public void updateWindSpeed(Instrument windSpeedView) {
+        UnitSystem unitSystem = preferences.getUserUnitSystem();
+        double speed;
+        String unitString;
+        switch(unitSystem) {
             case IMPERIAL:
-                return UnitConverter.kphToMph(UnitConverter.knotsToKph(wind.getSpeed()));
+                speed = UnitConverter.kphToMph(UnitConverter.knotsToKph(wind.getSpeed()));
+                unitString = "mph";
+                break;
             case METRIC:
-                return UnitConverter.knotsToKph(wind.getSpeed());
+                speed = UnitConverter.knotsToKph(wind.getSpeed());
+                unitString = "kph";
+                break;
             case NAUTICAL:
             default:
-                return wind.getSpeed();
+                speed = wind.getSpeed();
+                unitString = "kts";
+                break;
         }
+
+        String value = String.format("%.1f", speed);
+        windSpeedView.updateReading(value, unitString);
     }
 
     public int getWaveDirection() {
@@ -59,4 +71,5 @@ public class BuoyDetailViewModel {
                 return wave.getHeight();
         }
     }
+
 }

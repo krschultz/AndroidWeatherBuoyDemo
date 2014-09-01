@@ -13,6 +13,8 @@ import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView;
+import com.kevinrschultz.weatherbuoy.views.Instrument;
+import com.kevinrschultz.weatherbuoy.views.InstrumentView;
 
 import java.util.Random;
 
@@ -31,7 +33,8 @@ public class BuoyDetailFragment extends Fragment {
 
     // Views
     private AdvisoryBannerView advisoryBanner;
-
+    private InstrumentView windSpeedView;
+    private InstrumentView windDirectionView;
 
     public static BuoyDetailFragment newInstance() {
         return new BuoyDetailFragment();
@@ -52,6 +55,8 @@ public class BuoyDetailFragment extends Fragment {
     private void findViews() {
         final View v = getView();
         advisoryBanner = AdvisoryBannerView.class.cast(v.findViewById(R.id.buoy_detail_banner));
+        windSpeedView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_speed));
+        windDirectionView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_direction));
     }
 
     private void loadData() {
@@ -68,6 +73,8 @@ public class BuoyDetailFragment extends Fragment {
         this.wind = windCondition;
         this.waves = waveCondition;
         this.viewModel = new BuoyDetailViewModel(wind, waves, new WeatherBuoyPreferences(getActivity()));
+        viewModel.updateWindSpeed(windSpeedView);
+        viewModel.updateWindDirection(windDirectionView);
     }
 
     private AsyncTask<Void, Void, Void> loadMockAdvisory = new AsyncTask<Void, Void, Void>() {
@@ -86,7 +93,8 @@ public class BuoyDetailFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             if(getActivity() != null) {
-                updateAdvisory(new Advisory("SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 11 PM EDT THIS EVENING"));
+                advisory = new Advisory("SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 11 PM EDT THIS EVENING");
+                updateAdvisory(advisory);
             }
         }
     };
@@ -107,7 +115,7 @@ public class BuoyDetailFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             if(getActivity() != null) {
-                WindCondition randomWind = new WindCondition(Math.random() * 25.0, (int) Math.random() * 360);
+                WindCondition randomWind = new WindCondition(Math.random() * 25.0, (int) (Math.random() * 360.0));
                 WaveCondition randomWave = new WaveCondition(Math.random() * 10.0, 6.0 + Math.random() * 8.0, (int) Math.random() * 360);
                 updateWindAndWaves(randomWind, randomWave);
             }
