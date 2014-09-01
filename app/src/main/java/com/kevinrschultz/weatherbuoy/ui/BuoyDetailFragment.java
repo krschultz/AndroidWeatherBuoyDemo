@@ -11,14 +11,27 @@ import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.Advisory;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
+import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView;
+
+import java.util.Random;
 
 /**
  * @author Kevin Schultz (kschultz@gilt.com)
  */
 public class BuoyDetailFragment extends Fragment {
 
+    // Models
+    private Advisory advisory;
+    private WaveCondition waves;
+    private WindCondition wind;
+
+    // View Model
+    private BuoyDetailViewModel viewModel;
+
+    // Views
     private AdvisoryBannerView advisoryBanner;
+
 
     public static BuoyDetailFragment newInstance() {
         return new BuoyDetailFragment();
@@ -42,14 +55,47 @@ public class BuoyDetailFragment extends Fragment {
     }
 
     private void loadData() {
-        loadMockData.execute();
+        loadMockAdvisory.execute();
+        loadMockInstruments.execute();
     }
 
-    private AsyncTask<Void, Void, Void> loadMockData = new AsyncTask<Void, Void, Void>() {
+    private void updateAdvisory(Advisory advisory) {
+        this.advisory = advisory;
+        advisoryBanner.setOptionalText(advisory.getAdvisory());
+    }
+
+    private void updateWindAndWaves(WindCondition windCondition, WaveCondition waveCondition) {
+        this.wind = windCondition;
+        this.waves = waveCondition;
+        this.viewModel = new BuoyDetailViewModel(wind, waves, new WeatherBuoyPreferences(getActivity()));
+    }
+
+    private AsyncTask<Void, Void, Void> loadMockAdvisory = new AsyncTask<Void, Void, Void>() {
 
         @Override
         protected Void doInBackground(Void... params) {
-            // Network call or something like that here
+            // Simulate network call or loading from disk
+            try {
+                Thread.sleep(75);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            if(getActivity() != null) {
+                updateAdvisory(new Advisory("SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 11 PM EDT THIS EVENING"));
+            }
+        }
+    };
+
+    private AsyncTask<Void, Void, Void> loadMockInstruments = new AsyncTask<Void, Void, Void>() {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // Simulate network call or loading from disk
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -61,10 +107,11 @@ public class BuoyDetailFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             if(getActivity() != null) {
-                Advisory advisory = new Advisory("Mock advisory");
-                WindCondition wind = new WindCondition(12.3, 103);
-                WaveCondition wave = new WaveCondition(4.3, 8.2, 204);
+                WindCondition randomWind = new WindCondition(Math.random() * 25.0, (int) Math.random() * 360);
+                WaveCondition randomWave = new WaveCondition(Math.random() * 10.0, 6.0 + Math.random() * 8.0, (int) Math.random() * 360);
+                updateWindAndWaves(randomWind, randomWave);
             }
         }
     };
+
 }
