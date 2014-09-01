@@ -9,6 +9,9 @@ public class WindCondition {
 
     private static final String TAG = WindCondition.class.getSimpleName();
 
+    /**
+     * API is in knots
+     */
     private final double speed;
 
     private final int direction;

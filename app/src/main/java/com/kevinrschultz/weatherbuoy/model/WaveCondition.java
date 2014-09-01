@@ -10,6 +10,9 @@ public class WaveCondition {
 
     private static final String TAG = WaveCondition.class.getSimpleName();
 
+    /**
+     * API is in feet
+     */
     private final double height;
 
     @SerializedName("avg_period")
