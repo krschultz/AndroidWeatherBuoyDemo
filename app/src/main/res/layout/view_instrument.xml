@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/view_instrument_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        tools:text="Speed"/>
+
+    <TextView
+        android:id="@+id/view_instrument_measurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/view_instrument_label"
+        tools:text="10.6"/>
+
+    <TextView
+        android:id="@+id/view_instrument_units"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/view_instrument_measurement"
+        android:layout_toRightOf="@id/view_instrument_measurement"
+        tools:text="knts"/>
+
+</RelativeLayout>
