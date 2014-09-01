@@ -21,6 +21,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'LICENSE'
+        exclude 'NOTICE'
+        exclude 'asm-license.txt'
+    }
 }
 
 dependencies {
@@ -28,4 +34,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
 
     androidTestCompile 'com.squareup.assertj:assertj-android-support-v4:1.0.0'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.0'
+
 }
