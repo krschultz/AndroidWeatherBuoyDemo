@@ -2,6 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -24,7 +25,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_margin="@dimen/half_padding"
-            android:text="@string/wind" />
+            android:text="@string/wind"/>
 
         <com.kevinrschultz.weatherbuoy.views.InstrumentView
             android:id="@+id/buoy_detail_wind_speed"
@@ -32,7 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/buoy_detail_wind_section_header"
-            android:layout_margin="@dimen/half_padding" />
+            android:layout_margin="@dimen/half_padding"
+            custom:labelText="@string/speed"/>
 
         <com.kevinrschultz.weatherbuoy.views.InstrumentView
             android:id="@+id/buoy_detail_wind_direction"
@@ -40,7 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/buoy_detail_wind_speed"
             android:layout_margin="@dimen/half_padding"
-            android:layout_toRightOf="@id/buoy_detail_wind_speed" />
+            android:layout_toRightOf="@id/buoy_detail_wind_speed"
+            custom:labelText="@string/direction"/>
 
     </RelativeLayout>
 
@@ -65,7 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/buoy_detail_wave_section_header"
-            android:layout_margin="@dimen/half_padding" />
+            android:layout_margin="@dimen/half_padding"
+            custom:labelText="@string/height"/>
 
         <com.kevinrschultz.weatherbuoy.views.InstrumentView
             android:id="@+id/buoy_detail_wave_period"
@@ -73,7 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/buoy_detail_wave_height"
             android:layout_margin="@dimen/half_padding"
-            android:layout_toRightOf="@id/buoy_detail_wave_height" />
+            android:layout_toRightOf="@id/buoy_detail_wave_height"
+            custom:labelText="@string/period"/>
 
     </RelativeLayout>
 

@@ -6,5 +6,9 @@
     <string name="action_settings">Settings</string>
     <string name="wind">Wind</string>
     <string name="wave">Waves</string>
+    <string name="speed">Speed</string>
+    <string name="direction">Direction</string>
+    <string name="height">Height</string>
+    <string name="period">Period</string>
 
 </resources>
