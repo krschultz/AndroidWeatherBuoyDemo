@@ -27,7 +27,7 @@ public class BuoyDetailViewModelTest extends TestCase {
     private static final WindCondition WIND_CONDTIONS = new WindCondition(SPEED, WIND_DIRECTION);
 
     private static final double HEIGHT = 5.0;
-    private static final int PERIOD = 8;
+    private static final double PERIOD = 8.1;
     private static final int WAVE_DIRECTION = 225;
     private static final WaveCondition WAVE_CONDITION = new WaveCondition(HEIGHT, PERIOD, WAVE_DIRECTION);
 
@@ -54,7 +54,6 @@ public class BuoyDetailViewModelTest extends TestCase {
     }
 
     public void testGetWindSpeed_Metric() {
-        MockInstrument mockInstrument = new MockInstrument();
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeMetricPreferences());
         viewModel.updateWindSpeed(mockInstrument);
         assertThat(mockInstrument.value).isEqualTo("18.5");
@@ -62,7 +61,6 @@ public class BuoyDetailViewModelTest extends TestCase {
     }
 
     public void testGetWindSpeed_Nautical() {
-        MockInstrument mockInstrument = new MockInstrument();
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
         viewModel.updateWindSpeed(mockInstrument);
         assertThat(mockInstrument.value).isEqualTo("10.0");
@@ -76,22 +74,30 @@ public class BuoyDetailViewModelTest extends TestCase {
 
     public void testGetWavePeriod() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
-        assertThat(viewModel.getWavePeriod()).isEqualTo(WAVE_CONDITION.getPeriod());
+        viewModel.updateWavePeriod(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("8.1");
+        assertThat(mockInstrument.units).isEqualTo("s");
     }
 
     public void testGetWaveHeight_Imperial() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeImperialPreferences());
-        assertThat(viewModel.getWaveHeight()).isCloseTo(HEIGHT, PRECISION);
+        viewModel.updateWaveHeight(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("5.0");
+        assertThat(mockInstrument.units).isEqualTo("ft");
     }
 
     public void testGetWaveHeight_Metric() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeMetricPreferences());
-        assertThat(viewModel.getWaveHeight()).isCloseTo(1.52, PRECISION);
+        viewModel.updateWaveHeight(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("1.5");
+        assertThat(mockInstrument.units).isEqualTo("m");
     }
 
     public void testGetWaveHeight_Nautical() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
-        assertThat(viewModel.getWaveHeight()).isCloseTo(HEIGHT, PRECISION);
+        viewModel.updateWaveHeight(mockInstrument);
+        assertThat(mockInstrument.value).isEqualTo("5.0");
+        assertThat(mockInstrument.units).isEqualTo("ft");
     }
 
     private WeatherBuoyPreferences makeImperialPreferences() {

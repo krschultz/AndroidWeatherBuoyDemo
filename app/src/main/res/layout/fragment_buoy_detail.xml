@@ -44,4 +44,37 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/buoy_detail_wave_section_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/half_padding"
+            android:text="@string/wave" />
+
+        <com.kevinrschultz.weatherbuoy.views.InstrumentView
+            android:id="@+id/buoy_detail_wave_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/buoy_detail_wave_section_header"
+            android:layout_margin="@dimen/half_padding" />
+
+        <com.kevinrschultz.weatherbuoy.views.InstrumentView
+            android:id="@+id/buoy_detail_wave_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/buoy_detail_wave_height"
+            android:layout_margin="@dimen/half_padding"
+            android:layout_toRightOf="@id/buoy_detail_wave_height" />
+
+    </RelativeLayout>
+
 </LinearLayout>

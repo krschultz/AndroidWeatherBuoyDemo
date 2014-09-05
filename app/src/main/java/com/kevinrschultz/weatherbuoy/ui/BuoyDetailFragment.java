@@ -13,10 +13,7 @@ import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView;
-import com.kevinrschultz.weatherbuoy.views.Instrument;
 import com.kevinrschultz.weatherbuoy.views.InstrumentView;
-
-import java.util.Random;
 
 /**
  * @author Kevin Schultz (kschultz@gilt.com)
@@ -35,6 +32,8 @@ public class BuoyDetailFragment extends Fragment {
     private AdvisoryBannerView advisoryBanner;
     private InstrumentView windSpeedView;
     private InstrumentView windDirectionView;
+    private InstrumentView waveHeightView;
+    private InstrumentView wavePeriodView;
 
     public static BuoyDetailFragment newInstance() {
         return new BuoyDetailFragment();
@@ -57,6 +56,8 @@ public class BuoyDetailFragment extends Fragment {
         advisoryBanner = AdvisoryBannerView.class.cast(v.findViewById(R.id.buoy_detail_banner));
         windSpeedView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_speed));
         windDirectionView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_direction));
+        waveHeightView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wave_height));
+        wavePeriodView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wave_period));
     }
 
     private void loadData() {
@@ -69,12 +70,14 @@ public class BuoyDetailFragment extends Fragment {
         advisoryBanner.setOptionalText(advisory.getAdvisory());
     }
 
-    private void updateWindAndWaves(WindCondition windCondition, WaveCondition waveCondition) {
+    private void updateInstruments(WindCondition windCondition, WaveCondition waveCondition) {
         this.wind = windCondition;
         this.waves = waveCondition;
         this.viewModel = new BuoyDetailViewModel(wind, waves, new WeatherBuoyPreferences(getActivity()));
         viewModel.updateWindSpeed(windSpeedView);
         viewModel.updateWindDirection(windDirectionView);
+        viewModel.updateWaveHeight(waveHeightView);
+        viewModel.updateWavePeriod(wavePeriodView);
     }
 
     private AsyncTask<Void, Void, Void> loadMockAdvisory = new AsyncTask<Void, Void, Void>() {
@@ -117,7 +120,7 @@ public class BuoyDetailFragment extends Fragment {
             if(getActivity() != null) {
                 WindCondition randomWind = new WindCondition(Math.random() * 25.0, (int) (Math.random() * 360.0));
                 WaveCondition randomWave = new WaveCondition(Math.random() * 10.0, 6.0 + Math.random() * 8.0, (int) Math.random() * 360);
-                updateWindAndWaves(randomWind, randomWave);
+                updateInstruments(randomWind, randomWave);
             }
         }
     };

@@ -6,8 +6,15 @@ import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.util.UnitConverter;
 import com.kevinrschultz.weatherbuoy.views.Instrument;
+import com.kevinrschultz.weatherbuoy.views.InstrumentView;
 
 /**
+ * ViewModel to handle formatting
+ *
+ * Depends on two data models and user preferences
+ *
+ * Does not hold a reference to the view
+ *
  * @author Kevin Schultz
  */
 public class BuoyDetailViewModel {
@@ -47,29 +54,34 @@ public class BuoyDetailViewModel {
                 unitString = "kts";
                 break;
         }
-
-        String value = String.format("%.1f", speed);
-        windSpeedView.updateReading(value, unitString);
+        windSpeedView.updateReading(String.format("%.1f", speed), unitString);
     }
 
     public int getWaveDirection() {
         return wave.getDirection();
     }
 
-    public double getWavePeriod() {
-        return wave.getPeriod();
+    public void updateWavePeriod(Instrument wavePeriodView) {
+        wavePeriodView.updateReading(String.format("%.1f", wave.getPeriod()), "s");
     }
 
-    public double getWaveHeight() {
-        UnitSystem units = preferences.getUserUnitSystem();
-        switch(units) {
+    public void updateWaveHeight(Instrument waveHeightView) {
+        UnitSystem unitSystem = preferences.getUserUnitSystem();
+        double height;
+        String unitString;
+        switch(unitSystem) {
             case METRIC:
-                return UnitConverter.feetToMeters(wave.getHeight());
+                height = UnitConverter.feetToMeters(wave.getHeight());
+                unitString = "m";
+                break;
             case IMPERIAL:
             case NAUTICAL:
             default:
-                return wave.getHeight();
+                height = wave.getHeight();
+                unitString = "ft";
+                break;
         }
+        waveHeightView.updateReading(String.format("%.1f", height), unitString);
     }
 
 }
