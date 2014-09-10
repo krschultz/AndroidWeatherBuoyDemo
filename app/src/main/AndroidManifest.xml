@@ -8,18 +8,22 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ui.BuoyDetailActivity"
-            android:label="@string/app_name" >
+            android:name=".ui.BuoyListingActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.BuoyDetailActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".ui.BuoyListingActivity"/>
+        <activity
             android:name=".ui.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".ui.BuoyListingActivity"/>
+
     </application>
 
 </manifest>

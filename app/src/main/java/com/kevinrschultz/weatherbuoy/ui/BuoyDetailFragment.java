@@ -35,9 +35,11 @@ public class BuoyDetailFragment extends Fragment {
     private InstrumentView waveHeightView;
     private InstrumentView wavePeriodView;
 
-    public static BuoyDetailFragment newInstance() {
+    public static BuoyDetailFragment makeBuoyDetailFragment() {
         return new BuoyDetailFragment();
     }
+
+    public BuoyDetailFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

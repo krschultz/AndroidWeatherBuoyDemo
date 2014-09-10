@@ -6,7 +6,6 @@ import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.util.UnitConverter;
 import com.kevinrschultz.weatherbuoy.views.Instrument;
-import com.kevinrschultz.weatherbuoy.views.InstrumentView;
 
 /**
  * ViewModel to handle formatting
