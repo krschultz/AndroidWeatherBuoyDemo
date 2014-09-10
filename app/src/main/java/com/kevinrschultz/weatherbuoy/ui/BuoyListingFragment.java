@@ -9,11 +9,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.kevinrschultz.weatherbuoy.R;
+import com.kevinrschultz.weatherbuoy.model.BuoyDescription;
+
+import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class BuoyListingFragment extends Fragment implements View.OnClickListener {
+public class BuoyListingFragment extends Fragment implements BuoyListingView, View.OnClickListener {
+
+    private BuoyListingPresenter presenter;
 
     private Button testButton;
 
@@ -22,6 +27,7 @@ public class BuoyListingFragment extends Fragment implements View.OnClickListene
     }
 
     public BuoyListingFragment() {
+        presenter = new BuoyListingPresenter();
     }
 
     @Override
@@ -33,6 +39,18 @@ public class BuoyListingFragment extends Fragment implements View.OnClickListene
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        presenter.setView(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.clearView();
+    }
+
+    @Override
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.test_button:
@@ -40,5 +58,10 @@ public class BuoyListingFragment extends Fragment implements View.OnClickListene
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void updateList(List<BuoyDescription> descriptionList) {
+
     }
 }
