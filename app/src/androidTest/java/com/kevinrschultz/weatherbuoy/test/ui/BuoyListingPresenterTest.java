@@ -44,11 +44,25 @@ public class BuoyListingPresenterTest extends TestCase {
         verifyNoMoreInteractions(view);
     }
 
-    public void testSelectRegion() {
+    public void testSelectRegion_Atlantic() {
         MockBuoyListingView view = new MockBuoyListingView();
         defaultPresenter.setView(view);
         defaultPresenter.selectRegion(Region.ATLANTIC);
         assertEquals(FakeBuoyListingGenerator.makeAtlanticBuoyListings(), view.descriptionList);
+    }
+
+    public void testSelectRegion_Pacific() {
+        MockBuoyListingView view = new MockBuoyListingView();
+        defaultPresenter.setView(view);
+        defaultPresenter.selectRegion(Region.PACIFIC);
+        assertEquals(FakeBuoyListingGenerator.makePacificBuoyListings(), view.descriptionList);
+    }
+
+    public void testSelectRegion_Caribbean() {
+        MockBuoyListingView view = new MockBuoyListingView();
+        defaultPresenter.setView(view);
+        defaultPresenter.selectRegion(Region.CARIBBEAN);
+        assertEquals(FakeBuoyListingGenerator.makeCaribbeanBuoyListings(), view.descriptionList);
     }
 
     private static class MockBuoyListingView implements BuoyListingView {

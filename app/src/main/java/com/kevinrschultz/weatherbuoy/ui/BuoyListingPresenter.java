@@ -31,11 +31,24 @@ public class BuoyListingPresenter {
     // Business logic
 
     public void selectRegion(Region region) {
-        view.updateList(FakeBuoyListingGenerator.makeAtlanticBuoyListings());
+        List<BuoyDescription> descriptions;
+        switch(region) {
+            case ATLANTIC:
+                descriptions = FakeBuoyListingGenerator.makeAtlanticBuoyListings();
+                break;
+            case CARIBBEAN:
+                descriptions = FakeBuoyListingGenerator.makeCaribbeanBuoyListings();
+                break;
+            case PACIFIC:
+                descriptions = FakeBuoyListingGenerator.makePacificBuoyListings();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid region");
+        }
+        view.updateList(descriptions);
     }
 
     private static class NoOpBuoyListingView implements BuoyListingView {
-
         @Override
         public void updateList(List<BuoyDescription> descriptionList) {
         }
