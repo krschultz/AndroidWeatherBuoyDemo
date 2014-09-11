@@ -43,7 +43,7 @@ public class BuoyListingPresenter {
                 descriptions = FakeBuoyListingGenerator.makePacificBuoyListings();
                 break;
             default:
-                throw new IllegalArgumentException("Invalid region");
+                descriptions = FakeBuoyListingGenerator.makeAtlanticBuoyListings();
         }
         view.updateList(descriptions);
     }

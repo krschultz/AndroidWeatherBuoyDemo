@@ -65,6 +65,13 @@ public class BuoyListingPresenterTest extends TestCase {
         assertEquals(FakeBuoyListingGenerator.makeCaribbeanBuoyListings(), view.descriptionList);
     }
 
+    public void testSelectRegion_None() {
+        MockBuoyListingView view = new MockBuoyListingView();
+        defaultPresenter.setView(view);
+        defaultPresenter.selectRegion(null);
+        assertEquals(FakeBuoyListingGenerator.makeAtlanticBuoyListings(), view.descriptionList);
+    }
+
     private static class MockBuoyListingView implements BuoyListingView {
 
         public List<BuoyDescription> descriptionList;

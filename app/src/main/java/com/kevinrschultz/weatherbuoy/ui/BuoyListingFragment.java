@@ -91,7 +91,7 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Ad
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         if (parent == regionSpinner) {
-            // ?
+            presenter.selectRegion(null);
         }
     }
 
@@ -106,6 +106,5 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Ad
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         return adapter;
     }
-
 
 }
