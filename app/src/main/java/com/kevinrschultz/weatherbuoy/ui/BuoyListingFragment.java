@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -17,13 +18,11 @@ import java.util.List;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class BuoyListingFragment extends Fragment implements BuoyListingView, View.OnClickListener {
+public class BuoyListingFragment extends Fragment implements BuoyListingView, AdapterView.OnItemClickListener {
 
     private BuoyListingPresenter presenter;
 
     private BuoyDescriptionAdapter adapter;
-
-    private Button testButton;
 
     private ListView listView;
 
@@ -40,7 +39,6 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_buoy_listing, container, false);
-        testButton = Button.class.cast(v.findViewById(R.id.test_button));
         listView = ListView.class.cast(v.findViewById(android.R.id.list));
         return v;
     }
@@ -50,7 +48,7 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
         super.onActivityCreated(savedInstanceState);
         adapter = new BuoyDescriptionAdapter(getActivity());
         listView.setAdapter(adapter);
-        testButton.setOnClickListener(this);
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -66,13 +64,10 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
     }
 
     @Override
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.test_button:
-                Intent intent = BuoyDetailActivity.makeBuoyDetailIntent(getActivity());
-                startActivity(intent);
-                break;
-        }
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        BuoyDescription description = adapter.getItem(position);
+        Intent intent = BuoyDetailActivity.makeBuoyDetailIntent(getActivity(), description.getId());
+        startActivity(intent);
     }
 
     @Override
@@ -80,4 +75,6 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
         adapter.clear();
         adapter.addAll(descriptionList);
     }
+
+
 }

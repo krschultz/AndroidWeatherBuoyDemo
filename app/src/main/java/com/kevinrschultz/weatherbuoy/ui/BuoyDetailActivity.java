@@ -11,7 +11,7 @@ import com.kevinrschultz.weatherbuoy.R;
 
 public class BuoyDetailActivity extends BaseActivity {
 
-    public static Intent makeBuoyDetailIntent(Context context) {
+    public static Intent makeBuoyDetailIntent(Context context, int bouyId) {
         return new Intent(context, BuoyDetailActivity.class);
     }
 
