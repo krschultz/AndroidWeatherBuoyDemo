@@ -11,6 +11,10 @@ import java.util.List;
 public class FakeBuoyListingGenerator {
 
     public static List<BuoyDescription> makeAtlanticBuoyListings() {
-        return Lists.newArrayList(new BuoyDescription(1, "test"));
+        BuoyDescription one = new BuoyDescription(41002, "South Hatteras");
+        BuoyDescription two = new BuoyDescription(41025, "Diamond Shoals");
+        BuoyDescription three = new BuoyDescription(44009, "Delaware Bay");
+        return Lists.newArrayList(one, two, three);
     }
+
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.BuoyDescription;
@@ -20,7 +21,11 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
 
     private BuoyListingPresenter presenter;
 
+    private BuoyDescriptionAdapter adapter;
+
     private Button testButton;
+
+    private ListView listView;
 
     public static BuoyListingFragment makeBuoyListingFragment() {
         return new BuoyListingFragment();
@@ -30,12 +35,22 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
         presenter = new BuoyListingPresenter();
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_buoy_listing, container, false);
         testButton = Button.class.cast(v.findViewById(R.id.test_button));
-        testButton.setOnClickListener(this);
+        listView = ListView.class.cast(v.findViewById(android.R.id.list));
         return v;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        adapter = new BuoyDescriptionAdapter(getActivity());
+        listView.setAdapter(adapter);
+        testButton.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +77,7 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Vi
 
     @Override
     public void updateList(List<BuoyDescription> descriptionList) {
-
+        adapter.clear();
+        adapter.addAll(descriptionList);
     }
 }
