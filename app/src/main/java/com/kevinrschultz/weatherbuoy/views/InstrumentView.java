@@ -28,7 +28,15 @@ public class InstrumentView extends RelativeLayout implements Instrument {
     }
 
     public InstrumentView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.InstrumentView, 0, 0);
+        try {
+            labelText = ta.getString(R.styleable.InstrumentView_labelText);
+            init();
+        } finally {
+            // why does un commenting this crash? Should not be the case?
+            // ta.recycle();
+        }
     }
 
     public InstrumentView(Context context, AttributeSet attrs, int defStyle) {
