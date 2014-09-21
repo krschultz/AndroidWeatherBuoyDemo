@@ -31,6 +31,9 @@ public class BuoyListingPresenter {
     // Business logic
 
     public void selectRegion(Region region) {
+        if (region == null) {
+            region = Region.ATLANTIC;
+        }
         List<BuoyDescription> descriptions;
         switch(region) {
             case ATLANTIC:
