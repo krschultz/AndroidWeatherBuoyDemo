@@ -20,38 +20,26 @@ public class InstrumentView extends RelativeLayout implements Instrument {
     private TextView measurementView;
     private TextView unitsView;
 
-    private String labelText;
-
     public InstrumentView(Context context) {
         super(context);
-        init();
+        init(context, null, 0);
     }
 
     public InstrumentView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.InstrumentView, 0, 0);
-        try {
-            labelText = ta.getString(R.styleable.InstrumentView_labelText);
-            init();
-        } finally {
-            // why does un commenting this crash? Should not be the case?
-            // ta.recycle();
-        }
+        init(context, attrs, 0);
     }
 
     public InstrumentView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        TypedArray ta = context.getTheme().obtainStyledAttributes(attrs, R.styleable.InstrumentView, 0, 0);
-        try {
-            labelText = ta.getString(R.styleable.InstrumentView_labelText);
-            init();
-        } finally {
-           // why does un commenting this crash? Should not be the case?
-           // ta.recycle();
-        }
+        init(context, attrs, defStyle);
     }
 
-    private void init() {
+    private void init(Context context, AttributeSet attrs, int defStyle) {
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.InstrumentView, defStyle, 0);
+        String labelText = ta.getString(R.styleable.InstrumentView_labelText);
+        ta.recycle();
+
         View v = inflate(getContext(), R.layout.view_instrument, this);
         labelView = TextView.class.cast(v.findViewById(R.id.view_instrument_label));
         measurementView = TextView.class.cast(v.findViewById(R.id.view_instrument_measurement));

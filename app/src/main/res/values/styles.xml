@@ -5,17 +5,17 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Headline">
+    <style name="Headline" parent="@android:style/TextAppearance">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">normal</item>
     </style>
-    
-    <style name="Title">
+
+    <style name="Title" parent="@android:style/TextAppearance">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Body1">
+    <style name="Body1" parent="@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
     </style>
