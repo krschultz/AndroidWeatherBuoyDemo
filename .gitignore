@@ -3,6 +3,9 @@
 *.iml
 .navigation/
 
+# don't ignore android studio target files
+!.idea/runConfigurations
+
 # eclipse files
 .classpath
 .project
