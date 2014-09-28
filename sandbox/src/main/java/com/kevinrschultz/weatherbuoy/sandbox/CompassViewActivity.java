@@ -45,6 +45,7 @@ public class CompassViewActivity extends Activity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 double direction = getDirectionFromProgress(progress);
                 waveLabel.setText(String.format("%.1f", direction));
+                compass.setWaveDirection(direction);
             }
 
             @Override
@@ -61,6 +62,7 @@ public class CompassViewActivity extends Activity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 double direction = getDirectionFromProgress(progress);
                 windLabel.setText(String.format("%.1f", direction));
+                compass.setWindDirection(direction);
             }
 
             @Override

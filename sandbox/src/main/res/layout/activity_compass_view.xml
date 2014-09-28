@@ -60,9 +60,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/standard_padding" />
 
-    <com.kevinrschultz.weatherbuoy.customviews.compass.CompassView
-        android:id="@+id/compass_compass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <com.kevinrschultz.weatherbuoy.customviews.compass.CompassView
+            android:id="@+id/compass_compass"
+            android:layout_width="192dp"
+            android:layout_height="192dp" />
+    </FrameLayout>
+
 
 </LinearLayout>
