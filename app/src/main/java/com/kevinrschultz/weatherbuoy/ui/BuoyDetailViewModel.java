@@ -1,5 +1,6 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
+import com.kevinrschultz.weatherbuoy.customviews.compass.Compass;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
@@ -30,8 +31,14 @@ public class BuoyDetailViewModel {
         this.preferences = preferences;
     }
 
-    public void updateWindDirection(Instrument windDirectionView) {
+    public void updateWindDirection(Instrument windDirectionView, Compass compass) {
         windDirectionView.updateReading(Integer.toString(wind.getDirection()), "");
+        compass.setWindDirection(wind.getDirection());
+    }
+
+    public void updateWaveDirection(Compass compass) {
+        int direction = wave.getDirection();
+        compass.setWaveDirection(direction);
     }
 
     public void updateWindSpeed(Instrument windSpeedView) {
@@ -54,10 +61,6 @@ public class BuoyDetailViewModel {
                 break;
         }
         windSpeedView.updateReading(String.format("%.1f", speed), unitString);
-    }
-
-    public int getWaveDirection() {
-        return wave.getDirection();
     }
 
     public void updateWavePeriod(Instrument wavePeriodView) {

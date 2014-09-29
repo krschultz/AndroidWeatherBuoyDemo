@@ -1,5 +1,6 @@
 package com.kevinrschultz.weatherbuoy.test.ui;
 
+import com.kevinrschultz.weatherbuoy.customviews.compass.Compass;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
@@ -13,6 +14,7 @@ import org.assertj.core.data.Offset;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -33,15 +35,19 @@ public class BuoyDetailViewModelTest extends TestCase {
 
     private MockInstrument mockInstrument;
 
+    private Compass mockCompass;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         mockInstrument = new MockInstrument();
+        mockCompass = mock(Compass.class);
     }
 
     public void testGetWindDirection() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
-        viewModel.updateWindDirection(mockInstrument);
+        viewModel.updateWindDirection(mockInstrument, mockCompass);
+        verify(mockCompass).setWindDirection(WIND_DIRECTION);
         assertThat(mockInstrument.value).isEqualTo("90");
         assertThat(mockInstrument.units).isEqualTo("");
     }
@@ -69,7 +75,8 @@ public class BuoyDetailViewModelTest extends TestCase {
 
     public void testGetWaveDirection() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
-        assertThat(viewModel.getWaveDirection()).isEqualTo(WAVE_CONDITION.getDirection());
+        viewModel.updateWaveDirection(mockCompass);
+        verify(mockCompass).setWaveDirection(WAVE_CONDITION.getDirection());
     }
 
     public void testGetWavePeriod() {

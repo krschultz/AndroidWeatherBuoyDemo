@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kevinrschultz.weatherbuoy.R;
+import com.kevinrschultz.weatherbuoy.customviews.compass.CompassView;
 import com.kevinrschultz.weatherbuoy.model.Advisory;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
@@ -34,6 +35,7 @@ public class BuoyDetailFragment extends Fragment {
     private InstrumentView windDirectionView;
     private InstrumentView waveHeightView;
     private InstrumentView wavePeriodView;
+    private CompassView compassView;
 
     public static BuoyDetailFragment makeBuoyDetailFragment() {
         return new BuoyDetailFragment();
@@ -60,6 +62,7 @@ public class BuoyDetailFragment extends Fragment {
         windDirectionView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_direction));
         waveHeightView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wave_height));
         wavePeriodView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wave_period));
+        compassView = CompassView.class.cast(v.findViewById(R.id.buoy_detail_compass));
     }
 
     private void loadData() {
@@ -77,7 +80,8 @@ public class BuoyDetailFragment extends Fragment {
         this.waves = waveCondition;
         this.viewModel = new BuoyDetailViewModel(wind, waves, new WeatherBuoyPreferences(getActivity()));
         viewModel.updateWindSpeed(windSpeedView);
-        viewModel.updateWindDirection(windDirectionView);
+        viewModel.updateWindDirection(windDirectionView, compassView);
+        viewModel.updateWaveDirection(compassView);
         viewModel.updateWaveHeight(waveHeightView);
         viewModel.updateWavePeriod(wavePeriodView);
     }
