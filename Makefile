@@ -1,6 +1,6 @@
-.PHONY: build clean install test
+.PHONY: assemble clean install test
 
-build:
+assemble:
 	./gradlew assemble
 
 clean:
