@@ -10,7 +10,7 @@ install:
 	./gradlew installDebug
 
 test:
-	./gradlew connectedAndroidTest
+	./gradlew connectedCheck
 
 view_coverage_report:
 	./gradlew connectedCheck
