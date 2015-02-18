@@ -10,6 +10,7 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         debug {
@@ -23,9 +24,11 @@ android {
     }
 
     packagingOptions {
-        exclude 'LICENSE'
-        exclude 'NOTICE'
         exclude 'asm-license.txt'
+        exclude 'LICENSE'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'NOTICE'
     }
 }
 
@@ -34,7 +37,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile project(':customviews')
 
-    androidTestCompile 'com.squareup.assertj:assertj-android-support-v4:1.0.0'
-    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
+    androidTestCompile 'com.squareup.assertj:assertj-android:1.0.0'
+    androidTestCompile 'org.apache.commons:commons-lang3:3.3.2'
 
 }

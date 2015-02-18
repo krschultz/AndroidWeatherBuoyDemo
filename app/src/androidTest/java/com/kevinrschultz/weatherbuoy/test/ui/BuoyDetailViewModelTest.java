@@ -1,5 +1,8 @@
 package com.kevinrschultz.weatherbuoy.test.ui;
 
+import android.support.test.runner.AndroidJUnit4;
+import android.test.suitebuilder.annotation.SmallTest;
+
 import com.kevinrschultz.weatherbuoy.customviews.compass.Compass;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
@@ -8,9 +11,10 @@ import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.ui.BuoyDetailViewModel;
 import com.kevinrschultz.weatherbuoy.views.Instrument;
 
-import junit.framework.TestCase;
-
 import org.assertj.core.data.Offset;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -20,7 +24,9 @@ import static org.mockito.Mockito.when;
 /**
  * @see com.kevinrschultz.weatherbuoy.ui.BuoyDetailViewModel
  */
-public class BuoyDetailViewModelTest extends TestCase {
+@SmallTest
+@RunWith(AndroidJUnit4.class)
+public class BuoyDetailViewModelTest {
 
     private static final Offset<Double> PRECISION = Offset.offset(0.01);
 
@@ -37,13 +43,13 @@ public class BuoyDetailViewModelTest extends TestCase {
 
     private Compass mockCompass;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @Before
+    public void setUp() throws Exception {
         mockInstrument = new MockInstrument();
         mockCompass = mock(Compass.class);
     }
 
+    @Test
     public void testGetWindDirection() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
         viewModel.updateWindDirection(mockInstrument, mockCompass);
@@ -52,6 +58,7 @@ public class BuoyDetailViewModelTest extends TestCase {
         assertThat(mockInstrument.units).isEqualTo("");
     }
 
+    @Test
     public void testGetWindSpeed_Imperial() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeImperialPreferences());
         viewModel.updateWindSpeed(mockInstrument);
@@ -59,6 +66,7 @@ public class BuoyDetailViewModelTest extends TestCase {
         assertThat(mockInstrument.units).isEqualTo("mph");
     }
 
+    @Test
     public void testGetWindSpeed_Metric() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeMetricPreferences());
         viewModel.updateWindSpeed(mockInstrument);
@@ -73,12 +81,14 @@ public class BuoyDetailViewModelTest extends TestCase {
         assertThat(mockInstrument.units).isEqualTo("kts");
     }
 
+    @Test
     public void testGetWaveDirection() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
         viewModel.updateWaveDirection(mockCompass);
         verify(mockCompass).setWaveDirection(WAVE_CONDITION.getDirection());
     }
 
+    @Test
     public void testGetWavePeriod() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
         viewModel.updateWavePeriod(mockInstrument);
@@ -86,6 +96,7 @@ public class BuoyDetailViewModelTest extends TestCase {
         assertThat(mockInstrument.units).isEqualTo("s");
     }
 
+    @Test
     public void testGetWaveHeight_Imperial() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeImperialPreferences());
         viewModel.updateWaveHeight(mockInstrument);
@@ -93,6 +104,7 @@ public class BuoyDetailViewModelTest extends TestCase {
         assertThat(mockInstrument.units).isEqualTo("ft");
     }
 
+    @Test
     public void testGetWaveHeight_Metric() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeMetricPreferences());
         viewModel.updateWaveHeight(mockInstrument);
@@ -100,6 +112,7 @@ public class BuoyDetailViewModelTest extends TestCase {
         assertThat(mockInstrument.units).isEqualTo("m");
     }
 
+    @Test
     public void testGetWaveHeight_Nautical() {
         BuoyDetailViewModel viewModel = new BuoyDetailViewModel(WIND_CONDTIONS, WAVE_CONDITION, makeNauticalPreferences());
         viewModel.updateWaveHeight(mockInstrument);

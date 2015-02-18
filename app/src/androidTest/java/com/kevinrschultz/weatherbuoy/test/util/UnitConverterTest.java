@@ -1,20 +1,26 @@
 package com.kevinrschultz.weatherbuoy.test.util;
 
+import android.support.test.runner.AndroidJUnit4;
+import android.test.suitebuilder.annotation.SmallTest;
+
 import com.kevinrschultz.weatherbuoy.util.UnitConverter;
 
-import junit.framework.TestCase;
-
 import org.assertj.core.data.Offset;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Kevin Schultz
  */
-public class UnitConverterTest extends TestCase {
+@SmallTest
+@RunWith(AndroidJUnit4.class)
+public class UnitConverterTest {
 
     private static final Offset<Double> PRECISION = Offset.offset(0.01);
 
+    @Test
     public void testKnotsToKph() {
         assertThat(UnitConverter.knotsToKph(0.00)).isEqualTo(0.00);
         assertThat(UnitConverter.knotsToKph(1.00)).isCloseTo(1.85, PRECISION);
@@ -24,6 +30,7 @@ public class UnitConverterTest extends TestCase {
         assertThat(UnitConverter.knotsToKph(20.00)).isCloseTo(37.04, PRECISION);
     }
 
+    @Test
     public void testMphToKph() {
         assertThat(UnitConverter.mphToKph(0.00)).isEqualTo(0.00);
         assertThat(UnitConverter.mphToKph(1.00)).isCloseTo(1.61, PRECISION);
@@ -33,6 +40,7 @@ public class UnitConverterTest extends TestCase {
         assertThat(UnitConverter.mphToKph(20.00)).isCloseTo(32.19, PRECISION);
     }
 
+    @Test
     public void testKphToKnots() {
         assertThat(UnitConverter.kphToKnots(0.00)).isEqualTo(0.00);
         assertThat(UnitConverter.kphToKnots(1.00)).isCloseTo(0.54, PRECISION);
@@ -41,6 +49,7 @@ public class UnitConverterTest extends TestCase {
         assertThat(UnitConverter.kphToKnots(40.00)).isCloseTo(21.60, PRECISION);
     }
 
+    @Test
     public void testKphToMph() {
         assertThat(UnitConverter.kphToMph(0.00)).isEqualTo(0.00);
         assertThat(UnitConverter.kphToMph(1.00)).isCloseTo(0.62, PRECISION);
@@ -49,6 +58,7 @@ public class UnitConverterTest extends TestCase {
         assertThat(UnitConverter.kphToMph(40.00)).isCloseTo(24.85, PRECISION);
     }
 
+    @Test
     public void testFeetToMeters() {
         assertThat(UnitConverter.feetToMeters(0.00)).isEqualTo(0.00);
         assertThat(UnitConverter.feetToMeters(1.00)).isCloseTo(0.30, PRECISION);
@@ -56,6 +66,7 @@ public class UnitConverterTest extends TestCase {
         assertThat(UnitConverter.feetToMeters(10.00)).isCloseTo(3.05, PRECISION);
     }
 
+    @Test
     public void testMetersToFeet() {
         assertThat(UnitConverter.metersToFeet(0.00)).isEqualTo(0.00);
         assertThat(UnitConverter.metersToFeet(1.00)).isCloseTo(3.28, PRECISION);
