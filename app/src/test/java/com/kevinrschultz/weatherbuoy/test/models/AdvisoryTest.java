@@ -1,32 +1,30 @@
 package com.kevinrschultz.weatherbuoy.test.models;
 
-import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.SmallTest;
-import android.text.TextUtils;
 
 import com.kevinrschultz.weatherbuoy.json.GsonSingleton;
 import com.kevinrschultz.weatherbuoy.model.Advisory;
-import com.kevinrschultz.weatherbuoy.test.TestUtils;
+import com.kevinrschultz.weatherbuoy.util.ResourceUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
  * @see com.kevinrschultz.weatherbuoy.model.Advisory
  */
-@SmallTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(JUnit4.class)
 public class AdvisoryTest {
 
     @Test
     public void testJsonParsing() throws IOException {
-        String json = TestUtils.getStringFromResourceFile("fixtures/advisory.json");
+        String json = ResourceUtils.getStringFromResourceFile("fixtures/advisory.json");
         Advisory parsed = GsonSingleton.get().fromJson(json, Advisory.class);
         Advisory expected = new Advisory("test");
         assertEquals(expected, parsed);
@@ -34,7 +32,7 @@ public class AdvisoryTest {
 
     @Test
     public void testToString() {
-        assertFalse(TextUtils.isEmpty(new Advisory("test").toString()));
+        assertNotNull(new Advisory("test").toString());
     }
 
     @Test

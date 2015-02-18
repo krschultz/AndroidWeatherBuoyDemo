@@ -43,4 +43,6 @@ dependencies {
     androidTestCompile 'com.squareup.assertj:assertj-android:1.0.0'
     androidTestCompile 'org.apache.commons:commons-lang3:3.3.2'
 
+    testCompile 'junit:junit:4.11'
+
 }
