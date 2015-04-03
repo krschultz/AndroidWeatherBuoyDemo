@@ -1,4 +1,4 @@
-package com.kevinrschultz.weatherbuoy.customviews.compass;
+package com.kevinrschultz.weatherbuoy.views;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.kevinrschultz.weatherbuoy.customviews.R;
+import com.kevinrschultz.weatherbuoy.R;
 
 /**
  * @author Kevin Schultz (kschultz@gilt.com)

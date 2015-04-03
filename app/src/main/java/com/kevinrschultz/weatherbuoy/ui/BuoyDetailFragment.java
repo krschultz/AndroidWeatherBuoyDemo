@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kevinrschultz.weatherbuoy.R;
-import com.kevinrschultz.weatherbuoy.customviews.compass.CompassView;
+import com.kevinrschultz.weatherbuoy.views.CompassView;
 import com.kevinrschultz.weatherbuoy.model.Advisory;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;

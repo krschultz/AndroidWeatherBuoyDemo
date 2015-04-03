@@ -86,7 +86,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.kevinrschultz.weatherbuoy.customviews.compass.CompassView
+        <com.kevinrschultz.weatherbuoy.views.CompassView
             android:id="@+id/buoy_detail_compass"
             android:layout_width="192dp"
             android:layout_height="192dp" />

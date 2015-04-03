@@ -1,4 +1,4 @@
-package com.kevinrschultz.weatherbuoy.customviews.compass;
+package com.kevinrschultz.weatherbuoy.test.views;
 
 import junit.framework.TestCase;
 

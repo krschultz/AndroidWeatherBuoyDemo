@@ -1,1 +1,1 @@
-include ':app', ':customviews', ':sandbox'
+include ':app'

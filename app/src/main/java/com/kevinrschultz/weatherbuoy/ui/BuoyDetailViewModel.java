@@ -1,6 +1,6 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
-import com.kevinrschultz.weatherbuoy.customviews.compass.Compass;
+import com.kevinrschultz.weatherbuoy.views.Compass;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;

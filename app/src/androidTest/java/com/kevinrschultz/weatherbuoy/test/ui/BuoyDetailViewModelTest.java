@@ -3,7 +3,7 @@ package com.kevinrschultz.weatherbuoy.test.ui;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.kevinrschultz.weatherbuoy.customviews.compass.Compass;
+import com.kevinrschultz.weatherbuoy.views.Compass;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;

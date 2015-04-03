@@ -11,4 +11,7 @@
     <color name="text">#DD000000</color>
     <color name="black">#FF000000</color>
 
+    <color name="wave_arrow">#00FF00</color>
+    <color name="wind_arrow">#FF0000</color>
+    <color name="compass_face">#FFFFFF</color>
 </resources>

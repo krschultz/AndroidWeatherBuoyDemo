@@ -1,4 +1,4 @@
-package com.kevinrschultz.weatherbuoy.customviews.compass;
+package com.kevinrschultz.weatherbuoy.views;
 
 /**
  * @author Kevin Schultz (kschultz@gilt.com)
