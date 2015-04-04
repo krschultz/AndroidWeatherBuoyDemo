@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.google.common.collect.Lists;
 import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.BuoyDescription;
 import com.kevinrschultz.weatherbuoy.model.Region;

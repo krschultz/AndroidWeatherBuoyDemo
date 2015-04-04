@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.google.common.base.Optional;
 import com.kevinrschultz.weatherbuoy.R;
 
-/**
- * @author Kevin Schultz
- */
 public class AdvisoryBannerView extends FrameLayout implements OptionalTextView {
 
     private static final String TAG = AdvisoryBannerView.class.getSimpleName();
@@ -44,7 +41,7 @@ public class AdvisoryBannerView extends FrameLayout implements OptionalTextView 
      */
     @Override
     public void setOptionalText(Optional<String> optionalText) {
-        if(optionalText.isPresent() && !TextUtils.isEmpty(optionalText.get())) {
+        if (optionalText.isPresent() && !TextUtils.isEmpty(optionalText.get())) {
             label.setText(optionalText.get());
             setVisibility(VISIBLE);
         } else {

@@ -12,10 +12,8 @@ import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 
-/**
- */
-public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedChangeListener{
-    
+public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedChangeListener {
+
     private WeatherBuoyPreferences preferences;
 
     private RadioGroup unitSystemRadioGroup;
@@ -24,7 +22,8 @@ public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedCh
         return new SettingsFragment();
     }
 
-    public SettingsFragment() {}
+    public SettingsFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedCh
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
         unitSystemRadioGroup = (RadioGroup) v.findViewById(R.id.settings_unit_system);
         unitSystemRadioGroup.setOnCheckedChangeListener(this);
@@ -48,7 +47,7 @@ public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedCh
     }
 
     public void setCurrentChecked(UnitSystem system) {
-        switch(system) {
+        switch (system) {
             case IMPERIAL:
                 ((RadioButton) getView().findViewById(R.id.settings_radio_imperial)).setChecked(true);
                 break;
@@ -71,7 +70,7 @@ public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedCh
     }
 
     private void updateUnitSystemPreference(int checkedId) {
-        switch(checkedId) {
+        switch (checkedId) {
             case R.id.settings_radio_imperial:
                 preferences.setUserUnitSystem(UnitSystem.IMPERIAL);
                 break;

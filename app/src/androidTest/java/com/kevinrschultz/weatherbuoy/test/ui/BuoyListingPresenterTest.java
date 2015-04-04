@@ -21,9 +21,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 @SmallTest
 @RunWith(AndroidJUnit4.class)
 public class BuoyListingPresenterTest {

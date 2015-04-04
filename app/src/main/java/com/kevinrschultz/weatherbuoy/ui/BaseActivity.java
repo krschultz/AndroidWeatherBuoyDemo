@@ -1,36 +1,34 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 
 import com.kevinrschultz.weatherbuoy.R;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public abstract class BaseActivity extends Activity {
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.base_menu, menu);
-        return true;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fragment_container);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Intent intent = SettingsActivity.makeSettingsActivityIntent(this);
-            startActivity(intent);
-            return true;
+    /**
+     * @param f              - fragment
+     * @param tag            - tag to find fragment by
+     * @param addToBackStack - true if adding fragment should be in backstack, false if not
+     */
+    public void attachFragment(Fragment f, String tag, boolean addToBackStack) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.activity_fragment_container, f, tag);
+        if (addToBackStack) {
+            ft.addToBackStack(null);
         }
-        return super.onOptionsItemSelected(item);
+        ft.commit();
     }
 
 }

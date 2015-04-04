@@ -7,9 +7,6 @@ import android.text.TextUtils;
 import com.kevinrschultz.weatherbuoy.Constants;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public class WeatherBuoyPreferences {
 
     private static final String PREFERENCES_FILE = "user_preferences";
@@ -36,7 +33,7 @@ public class WeatherBuoyPreferences {
     }
 
     private UnitSystem mapNameToUnitSystem(String name) {
-        if(TextUtils.equals(name, "NAUTICAL")) {
+        if (TextUtils.equals(name, "NAUTICAL")) {
             return UnitSystem.NAUTICAL;
         } else if (TextUtils.equals(name, "IMPERIAL")) {
             return UnitSystem.IMPERIAL;

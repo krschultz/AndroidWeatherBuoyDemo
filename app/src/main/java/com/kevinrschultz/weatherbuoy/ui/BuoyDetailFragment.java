@@ -8,17 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kevinrschultz.weatherbuoy.R;
-import com.kevinrschultz.weatherbuoy.views.CompassView;
 import com.kevinrschultz.weatherbuoy.model.Advisory;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView;
+import com.kevinrschultz.weatherbuoy.views.CompassView;
 import com.kevinrschultz.weatherbuoy.views.InstrumentView;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public class BuoyDetailFragment extends Fragment {
 
     // Models
@@ -41,7 +38,8 @@ public class BuoyDetailFragment extends Fragment {
         return new BuoyDetailFragment();
     }
 
-    public BuoyDetailFragment() {}
+    public BuoyDetailFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,7 +99,7 @@ public class BuoyDetailFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(getActivity() != null) {
+            if (getActivity() != null) {
                 advisory = new Advisory("SMALL CRAFT ADVISORY REMAINS IN EFFECT UNTIL 11 PM EDT THIS EVENING");
                 updateAdvisory(advisory);
             }
@@ -123,7 +121,7 @@ public class BuoyDetailFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(getActivity() != null) {
+            if (getActivity() != null) {
                 WindCondition randomWind = new WindCondition(Math.random() * 25.0, (int) (Math.random() * 360.0));
                 WaveCondition randomWave = new WaveCondition(Math.random() * 10.0, 6.0 + Math.random() * 8.0, (int) Math.random() * 360);
                 updateInstruments(randomWind, randomWave);

@@ -4,9 +4,6 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-/**
- * @author Kevin Schultz
- */
 public final class GsonSingleton {
 
     private static final Gson GSON = new GsonBuilder()

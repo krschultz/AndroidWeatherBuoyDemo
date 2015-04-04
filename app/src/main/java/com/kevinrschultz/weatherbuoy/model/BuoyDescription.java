@@ -2,9 +2,6 @@ package com.kevinrschultz.weatherbuoy.model;
 
 import com.google.common.base.Objects;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public class BuoyDescription {
 
     private static final String TAG = BuoyDescription.class.getSimpleName();
@@ -25,7 +22,7 @@ public class BuoyDescription {
     public String getName() {
         return name;
     }
-    
+
     /**
      * Object methods
      */
@@ -43,6 +40,7 @@ public class BuoyDescription {
 
         return equal;
     }
+
     @Override
     public String toString() {
         return Objects.toStringHelper(TAG)

@@ -15,9 +15,6 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 @MediumTest
 @RunWith(AndroidJUnit4.class)
 public class WeatherBuoyPreferencesTest {

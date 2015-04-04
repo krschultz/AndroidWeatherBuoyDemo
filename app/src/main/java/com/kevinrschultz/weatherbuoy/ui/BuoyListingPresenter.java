@@ -6,9 +6,6 @@ import com.kevinrschultz.weatherbuoy.model.Region;
 
 import java.util.List;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public class BuoyListingPresenter {
 
     private BuoyListingView view;
@@ -35,7 +32,7 @@ public class BuoyListingPresenter {
             region = Region.ATLANTIC;
         }
         List<BuoyDescription> descriptions;
-        switch(region) {
+        switch (region) {
             case ATLANTIC:
                 descriptions = FakeBuoyListingGenerator.makeAtlanticBuoyListings();
                 break;

@@ -11,9 +11,6 @@ import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * @author Kevin Schultz
- */
 @SmallTest
 @RunWith(AndroidJUnit4.class)
 public class UnitConverterTest {

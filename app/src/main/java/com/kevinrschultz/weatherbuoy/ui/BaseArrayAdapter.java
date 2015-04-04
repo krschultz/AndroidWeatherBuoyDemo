@@ -17,37 +17,49 @@ public abstract class BaseArrayAdapter<T, VH> extends ArrayAdapter<T> {
 
     private int mLayout;
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public BaseArrayAdapter(Context context, int resource) {
         super(context, resource);
         init(resource);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public BaseArrayAdapter(Context context, int resource, int textViewResourceId) {
         super(context, resource, textViewResourceId);
         init(resource);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public BaseArrayAdapter(Context context, int resource, T[] objects) {
         super(context, resource, objects);
         init(resource);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public BaseArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
         super(context, resource, textViewResourceId, objects);
         init(resource);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public BaseArrayAdapter(Context context, int resource, List<T> objects) {
         super(context, resource, objects);
         init(resource);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public BaseArrayAdapter(Context context, int resource, int textViewResourceId, List<T> objects) {
         super(context, resource, textViewResourceId, objects);
         init(resource);

@@ -7,9 +7,6 @@ import android.widget.TextView;
 import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.BuoyDescription;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public class BuoyDescriptionAdapter extends BaseArrayAdapter<BuoyDescription, BuoyDescriptionAdapter.ViewHolder> {
 
     public BuoyDescriptionAdapter(Context context) {

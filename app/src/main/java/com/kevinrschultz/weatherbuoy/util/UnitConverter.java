@@ -1,11 +1,9 @@
 package com.kevinrschultz.weatherbuoy.util;
 
-/**
- * @author Kevin Schultz
- */
 public final class UnitConverter {
 
-    private UnitConverter() {}
+    private UnitConverter() {
+    }
 
     public static double knotsToKph(double knots) {
         return knots * 1.8520;

@@ -10,10 +10,6 @@ import android.widget.TextView;
 
 import com.kevinrschultz.weatherbuoy.R;
 
-
-/**
- * @author Kevin Schultz
- */
 public class InstrumentView extends RelativeLayout implements Instrument {
 
     private TextView labelView;
@@ -44,7 +40,7 @@ public class InstrumentView extends RelativeLayout implements Instrument {
         labelView = TextView.class.cast(v.findViewById(R.id.view_instrument_label));
         measurementView = TextView.class.cast(v.findViewById(R.id.view_instrument_measurement));
         unitsView = TextView.class.cast(v.findViewById(R.id.view_instrument_units));
-        if(!TextUtils.isEmpty(labelText)) {
+        if (!TextUtils.isEmpty(labelText)) {
             setLabel(labelText);
         }
     }

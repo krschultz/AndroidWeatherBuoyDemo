@@ -3,9 +3,6 @@ package com.kevinrschultz.weatherbuoy.model;
 import com.google.common.base.Objects;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author Kevin Schultz
- */
 public class WaveCondition {
 
     private static final String TAG = WaveCondition.class.getSimpleName();

@@ -1,13 +1,12 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.kevinrschultz.weatherbuoy.R;
+public class SettingsActivity extends BaseActivity {
 
-public class SettingsActivity extends Activity {
+    private static final String TAG = SettingsActivity.class.getSimpleName();
 
     public static Intent makeSettingsActivityIntent(Context context) {
         return new Intent(context, SettingsActivity.class);
@@ -16,12 +15,13 @@ public class SettingsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment_container);
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.activity_fragment_container, SettingsFragment.newInstance())
-                    .commit();
+            attachSettingsFragment();
         }
+    }
+
+    private void attachSettingsFragment() {
+        attachFragment(SettingsFragment.newInstance(), TAG, false);
     }
 
 }

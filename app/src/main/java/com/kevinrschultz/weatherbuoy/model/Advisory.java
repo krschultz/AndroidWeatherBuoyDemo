@@ -3,11 +3,8 @@ package com.kevinrschultz.weatherbuoy.model;
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 
-/**
- * @author Kevin Schultz
- */
 public class Advisory {
-    
+
     private static final String TAG = Advisory.class.getSimpleName();
 
     private String advisory;

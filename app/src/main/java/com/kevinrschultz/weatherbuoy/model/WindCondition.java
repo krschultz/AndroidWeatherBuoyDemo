@@ -2,9 +2,6 @@ package com.kevinrschultz.weatherbuoy.model;
 
 import com.google.common.base.Objects;
 
-/**
- * @author Kevin Schultz
- */
 public class WindCondition {
 
     private static final String TAG = WindCondition.class.getSimpleName();

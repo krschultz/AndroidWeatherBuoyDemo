@@ -1,18 +1,18 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
-import com.kevinrschultz.weatherbuoy.views.Compass;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.model.WaveCondition;
 import com.kevinrschultz.weatherbuoy.model.WindCondition;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 import com.kevinrschultz.weatherbuoy.util.UnitConverter;
+import com.kevinrschultz.weatherbuoy.views.Compass;
 import com.kevinrschultz.weatherbuoy.views.Instrument;
 
 /**
  * ViewModel to handle formatting
- *
+ * <p/>
  * Depends on two data models and user preferences
- *
+ * <p/>
  * Does not hold a reference to the view
  *
  * @author Kevin Schultz
@@ -45,7 +45,7 @@ public class BuoyDetailViewModel {
         UnitSystem unitSystem = preferences.getUserUnitSystem();
         double speed;
         String unitString;
-        switch(unitSystem) {
+        switch (unitSystem) {
             case IMPERIAL:
                 speed = UnitConverter.kphToMph(UnitConverter.knotsToKph(wind.getSpeed()));
                 unitString = "mph";
@@ -71,7 +71,7 @@ public class BuoyDetailViewModel {
         UnitSystem unitSystem = preferences.getUserUnitSystem();
         double height;
         String unitString;
-        switch(unitSystem) {
+        switch (unitSystem) {
             case METRIC:
                 height = UnitConverter.feetToMeters(wave.getHeight());
                 unitString = "m";

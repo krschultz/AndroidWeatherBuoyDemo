@@ -11,9 +11,6 @@ import android.view.View;
 
 import com.kevinrschultz.weatherbuoy.R;
 
-/**
- * @author Kevin Schultz (kschultz@gilt.com)
- */
 public class CompassView extends View implements Compass {
 
     private double waveDirection = 0;
@@ -70,8 +67,8 @@ public class CompassView extends View implements Compass {
         super.onSizeChanged(w, h, oldw, oldh);
 
         // Account for padding
-        xPadding = (float)(getPaddingLeft() + getPaddingRight());
-        yPadding = (float)(getPaddingTop() + getPaddingBottom());
+        xPadding = (float) (getPaddingLeft() + getPaddingRight());
+        yPadding = (float) (getPaddingTop() + getPaddingBottom());
 
         widthNoPadding = (float) w - xPadding;
         heightNoPadding = (float) h - yPadding;

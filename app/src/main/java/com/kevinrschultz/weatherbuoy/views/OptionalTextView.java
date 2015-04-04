@@ -2,9 +2,6 @@ package com.kevinrschultz.weatherbuoy.views;
 
 import com.google.common.base.Optional;
 
-/**
- * @author Kevin Schultz
- */
 public interface OptionalTextView {
 
     /**
@@ -12,6 +9,6 @@ public interface OptionalTextView {
      *
      * @param optionalText
      */
-    public void setOptionalText(Optional<String> optionalText);
+    void setOptionalText(Optional<String> optionalText);
 
 }
