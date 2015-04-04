@@ -12,7 +12,7 @@ android:
   components:
     - build-tools-22.0.1
     - android-22
-    - sys-image-armeabi-v7a-android-22
+    - sys-img-armeabi-v7a-android-22
 
 before_script:
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
