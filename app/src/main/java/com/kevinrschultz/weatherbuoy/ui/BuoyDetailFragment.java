@@ -1,11 +1,11 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
-import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.Advisory;
@@ -16,7 +16,9 @@ import com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView;
 import com.kevinrschultz.weatherbuoy.views.CompassView;
 import com.kevinrschultz.weatherbuoy.views.InstrumentView;
 
-public class BuoyDetailFragment extends Fragment {
+import butterknife.InjectView;
+
+public class BuoyDetailFragment extends BaseFragment {
 
     // Models
     private Advisory advisory;
@@ -27,12 +29,20 @@ public class BuoyDetailFragment extends Fragment {
     private BuoyDetailViewModel viewModel;
 
     // Views
-    private AdvisoryBannerView advisoryBanner;
-    private InstrumentView windSpeedView;
-    private InstrumentView windDirectionView;
-    private InstrumentView waveHeightView;
-    private InstrumentView wavePeriodView;
-    private CompassView compassView;
+    @InjectView(R.id.buoy_detail_banner)
+    AdvisoryBannerView advisoryBanner;
+    @InjectView(R.id.buoy_detail_wind_speed)
+    InstrumentView windSpeedView;
+    @InjectView(R.id.buoy_detail_wind_direction)
+    InstrumentView windDirectionView;
+    @InjectView(R.id.buoy_detail_wave_height)
+    InstrumentView waveHeightView;
+    @InjectView(R.id.buoy_detail_wave_period)
+    InstrumentView wavePeriodView;
+    @InjectView(R.id.buoy_detail_compass)
+    CompassView compassView;
+    @InjectView(R.id.buoy_detail_add_to_fav)
+    Button addToFavorites;
 
     public static BuoyDetailFragment makeBuoyDetailFragment() {
         return new BuoyDetailFragment();
@@ -43,24 +53,13 @@ public class BuoyDetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_buoy_detail, container, false);
+        return super.onCreateViewWithButterKnife(R.layout.fragment_buoy_detail, inflater, container);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        findViews();
         loadData();
-    }
-
-    private void findViews() {
-        final View v = getView();
-        advisoryBanner = AdvisoryBannerView.class.cast(v.findViewById(R.id.buoy_detail_banner));
-        windSpeedView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_speed));
-        windDirectionView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wind_direction));
-        waveHeightView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wave_height));
-        wavePeriodView = InstrumentView.class.cast(v.findViewById(R.id.buoy_detail_wave_period));
-        compassView = CompassView.class.cast(v.findViewById(R.id.buoy_detail_compass));
     }
 
     private void loadData() {

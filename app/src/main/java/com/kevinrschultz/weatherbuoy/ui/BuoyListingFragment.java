@@ -1,6 +1,5 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,10 +16,15 @@ import com.kevinrschultz.weatherbuoy.model.Region;
 
 import java.util.List;
 
+import butterknife.InjectView;
+
 /**
  * A placeholder fragment containing a simple view.
  */
-public class BuoyListingFragment extends Fragment implements BuoyListingView, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+public class BuoyListingFragment extends BaseFragment implements
+        BuoyListingView,
+        AdapterView.OnItemClickListener,
+        AdapterView.OnItemSelectedListener {
 
     private BuoyListingPresenter presenter;
 
@@ -28,9 +32,11 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Ad
 
     private ArrayAdapter<Region> regionAdapter;
 
-    private ListView buoyListView;
-
-    private Spinner regionSpinner;
+    // Views
+    @InjectView(android.R.id.list)
+    ListView buoyListView;
+    @InjectView(R.id.buoy_listing_region_spinner)
+    Spinner regionSpinner;
 
     public static BuoyListingFragment makeBuoyListingFragment() {
         return new BuoyListingFragment();
@@ -42,10 +48,7 @@ public class BuoyListingFragment extends Fragment implements BuoyListingView, Ad
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_buoy_listing, container, false);
-        buoyListView = ListView.class.cast(v.findViewById(android.R.id.list));
-        regionSpinner = Spinner.class.cast(v.findViewById(R.id.buoy_listing_region_spinner));
-        return v;
+        return super.onCreateViewWithButterKnife(R.layout.fragment_buoy_listing, inflater, container);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.kevinrschultz.weatherbuoy.ui;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +11,21 @@ import com.kevinrschultz.weatherbuoy.R;
 import com.kevinrschultz.weatherbuoy.model.UnitSystem;
 import com.kevinrschultz.weatherbuoy.preferences.WeatherBuoyPreferences;
 
-public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedChangeListener {
+import butterknife.InjectView;
+
+public class SettingsFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener {
 
     private WeatherBuoyPreferences preferences;
 
-    private RadioGroup unitSystemRadioGroup;
+    // Views
+    @InjectView(R.id.settings_unit_system)
+    RadioGroup unitSystemRadioGroup;
+    @InjectView(R.id.settings_radio_imperial)
+    RadioButton imperialButton;
+    @InjectView(R.id.settings_radio_metric)
+    RadioButton metricButton;
+    @InjectView(R.id.settings_radio_nautical)
+    RadioButton nauticalButton;
 
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
@@ -32,10 +41,8 @@ public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedCh
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_settings, container, false);
-        unitSystemRadioGroup = (RadioGroup) v.findViewById(R.id.settings_unit_system);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = super.onCreateViewWithButterKnife(R.layout.fragment_settings, inflater, container);
         unitSystemRadioGroup.setOnCheckedChangeListener(this);
         return v;
     }
@@ -49,13 +56,13 @@ public class SettingsFragment extends Fragment implements RadioGroup.OnCheckedCh
     public void setCurrentChecked(UnitSystem system) {
         switch (system) {
             case IMPERIAL:
-                ((RadioButton) getView().findViewById(R.id.settings_radio_imperial)).setChecked(true);
+                imperialButton.setChecked(true);
                 break;
             case METRIC:
-                ((RadioButton) getView().findViewById(R.id.settings_radio_metric)).setChecked(true);
+                metricButton.setChecked(true);
                 break;
             case NAUTICAL:
-                ((RadioButton) getView().findViewById(R.id.settings_radio_nautical)).setChecked(true);
+                nauticalButton.setChecked(true);
                 break;
         }
     }
