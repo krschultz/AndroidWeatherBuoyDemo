@@ -20,9 +20,7 @@ public class BuoyDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            attachBuoyDetailFragment();
-        }
+        attachBuoyDetailFragment();
     }
 
     @Override

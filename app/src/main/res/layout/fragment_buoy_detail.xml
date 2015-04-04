@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kevinrschultz.weatherbuoy.ui.BuoyDetailActivity">
+    tools:context="com.kevinrschultz.weatherbuoy.ui.BuoyDetailActivity"
+    tools:ignore="RtlHardcoded">
 
     <com.kevinrschultz.weatherbuoy.views.AdvisoryBannerView
         android:id="@+id/buoy_detail_banner"
@@ -14,17 +14,17 @@
         android:layout_height="wrap_content" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
         android:padding="@dimen/activity_vertical_margin">
 
         <TextView
             android:id="@+id/buoy_detail_wind_section_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/half_padding"
             android:text="@string/wind" />
 
@@ -49,8 +49,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
         android:padding="@dimen/activity_vertical_margin">
 
@@ -58,8 +59,8 @@
             android:id="@+id/buoy_detail_wave_section_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/half_padding"
             android:text="@string/wave" />
 
@@ -84,14 +85,21 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
         <com.kevinrschultz.weatherbuoy.views.CompassView
             android:id="@+id/buoy_detail_compass"
             android:layout_width="192dp"
             android:layout_height="192dp" />
     </FrameLayout>
 
-
+    <Button
+        android:id="@+id/buoy_detail_add_to_fav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/standard_padding"
+        android:text="@string/add_to_favorites" />
 
 </LinearLayout>
